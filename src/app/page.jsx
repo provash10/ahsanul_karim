@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className="bg-[#030810]">
       <Banner />
-      <div className="max-w-7xl mx-auto flex flex-col gap-4 px-2 sm:px-3 pt-0 pb-4">
+      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-3 pb-4 pt-0 sm:px-4 sm:gap-5 lg:px-6">
         {/* <CoreSkills></CoreSkills> */}
         <AboutMe />
         <Skills />

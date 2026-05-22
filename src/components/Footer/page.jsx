@@ -8,16 +8,16 @@ import BottomBar from "@/components/Footer/BottomBar";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#050b1a] text-gray-400 m-4 pt-12 pb-4 relative overflow-hidden rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.8)] border border-slate-800/40">
+    <footer className="relative m-3 overflow-hidden rounded-2xl border border-slate-800/40 bg-[#050b1a] pt-10 pb-4 text-gray-400 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.8)] sm:m-4 sm:pt-12">
       {/* Ambient Background Glow */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,_rgba(37,99,235,0.05)_0%,_transparent_50%)] pointer-events-none"></div>
+      <div className="pointer-events-none absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle_at_50%_0%,_rgba(37,99,235,0.05)_0%,_transparent_50%)]"></div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-6">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6">
+        <div className="mb-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
 
           {/* Branding & Mission */}
-          <div className="space-y-8">
-            <Link href="/" className="h-[38px] px-6 flex items-center justify-center w-fit mb-6 group">
+          <div className="space-y-6">
+            <Link href="/" className="mb-4 flex w-fit items-center justify-center px-0 sm:px-2 group">
               {/* <div className="relative">
                 <Image
                   src="/image/careio.png"
@@ -30,18 +30,18 @@ const Footer = () => {
               </div> */}
               {/* <h1 className="text-2xl font-bold">Ahsanul Digital</h1> */}
               <Image
-                                                  src={logoImg}
-                                                  alt="bannerImg"
-                                                  width={160}
-                                                  height={60}
-                                                  className="w-32 sm:w-40 md:w-[160px] h-auto"
-                                              />
+                src={logoImg}
+                alt="bannerImg"
+                width={160}
+                height={60}
+                className="w-32 sm:w-40 md:w-[160px] h-auto"
+              />
             </Link>
-            <p className="text-gray-500 text-base leading-relaxed font-medium mb-6">
-               I am a Digital Marketing Expert specializing in Facebook, Instagram, 
-            and Google Ads. I help businesses grow online with proven strategies.
+            <p className="mb-4 text-sm leading-relaxed text-gray-500 sm:text-base">
+              I am a Digital Marketing Expert specializing in Facebook, Instagram,
+              and Google Ads. I help businesses grow online with proven strategies.
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
               {[
                 { icon: <FaFacebookF />, href: "https://facebook.com/ahsanuldigital", color: "hover:bg-blue-600 hover:border-blue-600 hover:text-white text-blue-400 border-blue-500/30 bg-blue-500/10" },
                 { icon: <FaTwitter />, href: "https://x.com/ahsanuldigital", color: "hover:bg-slate-600 hover:border-slate-500 hover:text-white text-slate-300 border-slate-500/30 bg-slate-500/10" },
@@ -53,7 +53,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-xl border flex items-center justify-center hover:-translate-y-1 transition-all duration-300 shadow-xl ${social.color}`}
+                  className={`flex h-10 w-10 items-center justify-center rounded-xl border shadow-xl transition-all duration-300 hover:-translate-y-1 ${social.color}`}
                 >
                   {social.icon}
                 </Link>

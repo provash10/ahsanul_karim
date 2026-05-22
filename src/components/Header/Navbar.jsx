@@ -21,30 +21,64 @@ const Navbar = () => {
     ];
 
     return (
-        <div className='sticky top-0 z-50 bg-[#0a192f] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.6)] border-b border-slate-800/60 px-4'>
-            <div className='flex justify-between items-center px-6 py-3 h-14'>
+        <div className="
+            sticky
+            top-0
+            z-50
+            bg-[#0a192f]
+            border-b
+            border-slate-800/60
+            shadow-[0_4px_20px_-4px_rgba(0,0,0,0.6)]
+            px-4
+        ">
+
+            <div className="
+                mx-auto
+                max-w-7xl
+                flex
+                justify-between
+                items-center
+                py-3
+                h-16
+            ">
 
                 {/* Logo */}
-                <div className='flex items-center gap-0'>
+                <div className="flex items-center">
                     <NavbarLogoImg1 />
                     <NavbarLogoImg2 />
                 </div>
 
                 {/* Desktop Menu */}
-                <div className='hidden md:flex items-center gap-6 font-medium'>
+                <div className="
+                    hidden
+                    md:flex
+                    items-center
+                    gap-6
+                    font-medium
+                ">
                     {links.map((link) => (
-                        <NavbarBtn key={link.href} href={link.href} label={link.label} />
+                        <NavbarBtn
+                            key={link.href}
+                            href={link.href}
+                            label={link.label}
+                        />
                     ))}
                 </div>
 
-                {/* Hire Me - desktop */}
-                <div className='hidden md:block'>
-                    <NavbarHireBtn onClick={() => setModalOpen(true)} />
+                {/* Desktop Hire */}
+                <div className="hidden md:block">
+                    <NavbarHireBtn
+                        onClick={() => setModalOpen(true)}
+                    />
                 </div>
 
-                {/* Hamburger - mobile */}
+                {/* Mobile Menu Button */}
                 <button
-                    className='md:hidden text-white text-2xl'
+                    className="
+                        md:hidden
+                        text-white
+                        text-3xl
+                    "
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <HiX /> : <HiMenu />}
@@ -54,17 +88,70 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className='md:hidden flex flex-col items-start gap-3 px-4 pb-4 bg-[#0a192f] border-t border-slate-700 w-full'>
+
+                <div
+                    className="
+                    md:hidden
+                    bg-[#0a192f]
+                    border-t
+                    border-slate-700
+                    px-5
+                    py-4
+                    flex
+                    flex-col
+                    items-end
+                    gap-4
+                "
+                >
+
                     {links.map((link) => (
-                        <NavbarBtn key={link.href} href={link.href} label={link.label} onClick={() => setIsOpen(false)} />
+
+                        <div
+                            key={link.href}
+                            className="
+                            w-full
+                            flex
+                            justify-end
+                        "
+                        >
+
+                            <NavbarBtn
+                                href={link.href}
+                                label={link.label}
+                                onClick={() =>
+                                    setIsOpen(false)
+                                }
+                            />
+
+                        </div>
+
                     ))}
-                    <div className='pt-1 w-full'>
-                        <NavbarHireBtn onClick={() => { setModalOpen(true); setIsOpen(false); }} />
+
+                    <div
+                        className="
+                        w-full
+                        flex
+                        justify-end
+                        pt-2
+                    "
+                    >
+                        <NavbarHireBtn
+                            onClick={() => {
+                                setModalOpen(true);
+                                setIsOpen(false);
+                            }}
+                        />
                     </div>
+
                 </div>
+
             )}
 
-            <HireMeModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+            <HireMeModal
+                isOpen={modalOpen}
+                onClose={() => setModalOpen(false)}
+            />
+
         </div>
     );
 };

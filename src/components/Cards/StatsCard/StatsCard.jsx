@@ -45,7 +45,7 @@ const StatItem = ({ stat }) => {
 
 const StatsCard = () => {
     return (
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-10 px-4 md:px-16 py-6 bg-[#060d1f] rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.6)] border border-slate-800/60">
+        <div className="grid grid-cols-1 gap-4 rounded-2xl border border-slate-800/60 bg-[#060d1f] px-4 py-6 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.6)] sm:grid-cols-2 sm:px-6 md:gap-6 md:px-8 lg:grid-cols-4 lg:px-10">
             {stats.map((stat, idx) => (
                 <StatItem key={idx} stat={stat} />
             ))}

@@ -48,7 +48,7 @@ const SkillsCard = () => {
   return (
     <div
       id="skills"
-      className="p-4 bg-cover bg-center bg-no-repeat relative overflow-hidden"
+      className="relative overflow-hidden bg-cover bg-center bg-no-repeat p-4 sm:p-6"
       style={{
         backgroundImage:
           "linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)), url('/assets/skills-bg.png')"
@@ -59,12 +59,12 @@ const SkillsCard = () => {
       <motion.h2
         animate={titleControls}
         initial={{ rotate: 0 }}
-        className="text-4xl text-white text-center font-bold m-4"
+        className="m-3 text-center text-2xl font-bold text-white sm:text-3xl"
       >
         Skills
       </motion.h2>
 
-      <div className="flex items-center justify-center flex-wrap gap-3 py-2">
+      <div className="flex flex-wrap items-center justify-center gap-3 py-2 sm:gap-4">
         {skills.map((skill, index) => (
           <motion.div
             key={index}
@@ -76,19 +76,19 @@ const SkillsCard = () => {
               transition: { duration: 0.5, ease: "easeOut", delay: index * 0.08 }
             }}
             viewport={{ once: false }}
-            className={`${skill.bg} border rounded-xl flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 flex flex-col justify-center items-center p-2 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] hover:shadow-[0_0_30px_-6px_rgba(59,130,246,0.5)] hover:-translate-y-1 transition-all duration-300`}
+            className={`${skill.bg} flex h-20 w-20 flex-shrink-0 flex-col items-center justify-center rounded-xl border p-2 text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_-6px_rgba(59,130,246,0.5)] sm:h-28 sm:w-28 sm:p-3`}
           >
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              {skill.icon}
+              {React.cloneElement(skill.icon, { className: 'text-3xl sm:text-4xl' })}
             </motion.div>
 
             <motion.h3
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.1 }}
-              className="text-white text-sm font-bold text-center mt-1"
+              className="mt-1 text-center text-[0.65rem] font-bold text-white sm:text-sm"
             >
               {skill.name}
             </motion.h3>
