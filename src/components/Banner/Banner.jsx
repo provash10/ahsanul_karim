@@ -185,7 +185,7 @@ const Banner = () => {
                         </SweepLinkBtn>
 
                         <SweepLinkBtn
-                            href="https://www.fiverr.com/yourusername"
+                            href="https://www.fiverr.com/s/387lEbL"
                             target="_blank"
                             className="
                             w-full
@@ -204,17 +204,26 @@ const Banner = () => {
                                     "linear-gradient(135deg,#1DBF73,#0F9D58)",
                             }}
                         >
-                            Fiverr Profile
+                            Fiverr
                         </SweepLinkBtn>
                     </div>
                 </div>
 
                 {/* Right */}
-                <div className="flex flex-col justify-center items-center gap-4 text-center">
-                    <div className="w-full max-w-xs sm:max-w-md lg:max-w-sm">
+                {/* Right */}
+                <div className="flex flex-col justify-center items-center gap-6 text-center">
+                    <div className="w-full max-w-xs sm:max-w-md lg:max-w-lg">
                         <RotatingTextRight
                             items={["Facebook Ads", "Google Ads"]}
-                            className="text-sm font-bold sm:text-base md:text-xl lg:text-2xl"
+                            className="
+                text-xl
+                sm:text-2xl
+                md:text-3xl
+                lg:text-4xl
+                xl:text-5xl
+                font-bold
+                leading-tight
+            "
                             interval={3500}
                         />
 
@@ -223,7 +232,16 @@ const Banner = () => {
                                 "Conversion Tracking",
                                 "Server Side Tracking",
                             ]}
-                            className="mt-4 text-sm font-bold sm:text-base md:text-xl lg:text-2xl"
+                            className="
+                mt-5
+                text-xl
+                sm:text-2xl
+                md:text-3xl
+                lg:text-4xl
+                xl:text-5xl
+                font-bold
+                leading-tight
+            "
                             interval={3900}
                         />
 
@@ -232,14 +250,25 @@ const Banner = () => {
                                 "Shopify Design",
                                 "YouTube Marketing",
                             ]}
-                            className="mt-4 text-sm font-bold sm:text-base md:text-xl lg:text-2xl"
+                            className="
+                mt-5
+                text-xl
+                sm:text-2xl
+                md:text-3xl
+                lg:text-4xl
+                xl:text-5xl
+                font-bold
+                leading-tight
+            "
                             interval={4500}
                         />
                     </div>
                 </div>
+
             </div>
         </section>
     );
 };
 
 export default Banner;
+
