@@ -205,7 +205,7 @@ const RightCard = () => {
           name="message"
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
-          placeholder="Message"
+          placeholder="Write Your Message"
           rows={5}
           className="w-full border p-2 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200"
         />
