@@ -71,7 +71,16 @@ const AboutMe = () => {
             custom={1}
             animate={controls}
             initial={{ opacity: 1, y: 0 }}
-            className="text-white mt-2 px-4 sm:px-8"
+            className="
+    text-white
+    mt-2
+    px-4
+    sm:px-8
+    text-center
+    md:text-left
+    ml-0
+    md:ml-8
+  "
           >
             Digital Marketing Expert.
           </motion.p>

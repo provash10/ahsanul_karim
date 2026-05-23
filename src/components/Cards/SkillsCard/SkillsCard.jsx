@@ -2,24 +2,22 @@
 
 import React from "react";
 import { motion, useAnimation } from "motion/react";
-import {
-  FaFacebookF,
-  FaGoogle,
-  FaChartLine,
-  FaServer,
-  FaShopify,
-  FaProjectDiagram,
-  FaYoutube
-} from "react-icons/fa";
+import Image from "next/image";
+
+import smfb from "../../../../public/assets/smfb.png";
+import smgoogle from "../../../../public/assets/smgoogle.png";
+import smshopify from "../../../../public/assets/smshopify.png";
+import smyoutube from "../../../../public/assets/smytube.png";
+import demo from "../../../../public/assets/smincreasearrow.png";
 
 const skills = [
-  { name: "Facebook Ads", icon: <FaFacebookF className="text-blue-400 text-5xl" />, bg: "bg-blue-950 border-blue-600/50" },
-  { name: "Google Ads", icon: <FaGoogle className="text-red-400 text-5xl" />, bg: "bg-red-950 border-red-600/50" },
-  { name: "Conversion Tracking", icon: <FaChartLine className="text-green-400 text-5xl" />, bg: "bg-green-950 border-green-600/50" },
-  { name: "Server-side Tracking", icon: <FaServer className="text-purple-400 text-5xl" />, bg: "bg-purple-950 border-purple-600/50" },
-  { name: "Facebook CAPI", icon: <FaProjectDiagram className="text-yellow-400 text-5xl" />, bg: "bg-yellow-950 border-yellow-600/50" },
-  { name: "Shopify Design", icon: <FaShopify className="text-teal-400 text-5xl" />, bg: "bg-teal-950 border-teal-600/50" },
-  { name: "YouTube Ads", icon: <FaYoutube className="text-red-500 text-5xl" />, bg: "bg-red-950 border-red-700/50" },
+  { name: "Facebook Ads", img: smfb, bg: "bg-gradient-to-br from-blue-950 via-blue-800 to-cyan-700 border-blue-500/50" },
+  { name: "Google Ads", img: smgoogle, bg: "bg-gradient-to-br from-red-950 via-red-800 to-orange-700 border-red-500/50" },
+  { name: "Conversion Tracking", img: demo, bg: "bg-gradient-to-br from-green-950 via-green-800 to-emerald-600 border-green-500/50" },
+  { name: "Server-side Tracking", img: demo, bg: "bg-gradient-to-br from-purple-950 via-purple-800 to-fuchsia-700 border-purple-500/50" },
+  { name: "Facebook CAPI", img: demo, bg: "bg-gradient-to-br from-yellow-900 via-yellow-700 to-amber-500 border-yellow-500/50" },
+  { name: "Shopify Design", img: smshopify, bg: "bg-gradient-to-br from-teal-950 via-teal-800 to-cyan-600 border-teal-500/50" },
+  { name: "YouTube Ads", img: smyoutube, bg: "bg-gradient-to-br from-red-950 via-red-700 to-pink-600 border-red-500/50" },
 ];
 
 const SkillsCard = () => {
@@ -76,18 +74,30 @@ const SkillsCard = () => {
               transition: { duration: 0.5, ease: "easeOut", delay: index * 0.08 }
             }}
             viewport={{ once: false }}
-            className={`${skill.bg} flex h-20 w-20 flex-shrink-0 flex-col items-center justify-center rounded-xl border p-2 text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_-6px_rgba(59,130,246,0.5)] sm:h-28 sm:w-28 sm:p-3`}
+            className={`${skill.bg} flex h-20 w-20 sm:h-28 sm:w-28 flex-shrink-0 flex-col items-center justify-center rounded-xl border p-2 text-center shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_-6px_rgba(59,130,246,0.5)]`}
           >
+            {/* IMAGE */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              {React.cloneElement(skill.icon, { className: 'text-3xl sm:text-4xl' })}
+              <Image
+                src={skill.img}
+                alt={skill.name}
+                width={45}
+                height={45}
+                className="object-contain"
+              />
             </motion.div>
 
             <motion.h3
               animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.1 }}
+              transition={{
+                duration: 1.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: index * 0.1
+              }}
               className="mt-1 text-center text-[0.65rem] font-bold text-white sm:text-sm"
             >
               {skill.name}

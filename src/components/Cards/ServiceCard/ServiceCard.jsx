@@ -4,15 +4,99 @@ import React, { useRef } from "react";
 import { motion, useAnimation, useInView } from "motion/react";
 import { rotateAuto } from "@/app/animations/rotateImg/rotateImg";
 import { cardVariants, titleVariants } from "@/app/animations/servicesTitleAnimate/servicesTitleAnimate";
-import { FaFacebook, FaGoogle, FaChartLine, FaCogs, FaShoppingCart, FaYoutube } from "react-icons/fa";
+
+import Image from "next/image";
+import smfb from '../../../../public/assets/smfb.png';
+import smgoogle from '../../../../public/assets/smgoogle.png';
+import smincreasearrow from '../../../../public/assets/smincreasearrow.png';
+import smsetting from '../../../../public/assets/smsetting.png';
+import smshopify from '../../../../public/assets/smshopify.png';
+import smytube from '../../../../public/assets/smytube.png';
 
 const services = [
-  { title: "Facebook Ads Expert", icon: <FaFacebook className="text-blue-400 text-5xl" />, bg: "bg-blue-950 border-blue-600/60 hover:border-blue-400", desc: ["Facebook Ads Campaign Setup & Management", "Advanced Audience Targeting & Retargeting", "High-Converting Ad Creative Strategy", "Facebook Pixel & Conversion Tracking Setup", "Sales Funnel & Lead Generation Strategy", "Ads Optimization & ROAS Scaling"] },
-  { title: "Google Ads Expert", icon: <FaGoogle className="text-red-400 text-5xl" />, bg: "bg-red-950 border-red-600/60 hover:border-red-400", desc: ["Google Ads Campaign Setup & Management", "Keyword Research & Targeting Strategy", "Search, Display & YouTube Ads Setup", "Conversion Tracking & GTM Setup", "Ads Optimization & Quality Score Improvement", "ROI & Conversion Rate Optimization"] },
-  { title: "Conversion Tracking Expert", icon: <FaChartLine className="text-green-400 text-5xl" />, bg: "bg-green-950 border-green-600/60 hover:border-green-400", desc: ["Facebook Pixel Setup & Event Tracking", "Conversion API (CAPI) Integration", "Google Ads Conversion Tracking Setup", "Google Tag Manager (GTM) Configuration", "Server-Side Tracking Setup", "Data Accuracy & Tracking Optimization"] },
-  { title: "Server-Side Tracking Expert", icon: <FaCogs className="text-slate-300 text-5xl" />, bg: "bg-slate-800 border-slate-600/60 hover:border-slate-400", desc: ["Server-Side Tracking Setup (GTM Server)", "Facebook CAPI via Server-Side", "GA4 Server-Side Integration", "First-Party Data Tracking Setup", "Data Accuracy & Privacy Compliance", "Tracking Optimization & Debugging"] },
-  { title: "Shopify Store Design Expert", icon: <FaShoppingCart className="text-yellow-400 text-5xl" />, bg: "bg-yellow-950 border-yellow-600/60 hover:border-yellow-400", desc: ["Shopify Store Setup & Configuration", "Responsive & Mobile-Friendly Design", "Product Page Optimization", "Custom Theme Design & Customization", "Sales Funnel & Checkout Optimization", "App Integration & Performance Optimization"] },
-  { title: "YouTube Marketing Expert", icon: <FaYoutube className="text-red-500 text-5xl" />, bg: "bg-red-950 border-red-700/60 hover:border-red-500", desc: ["YouTube Channel Setup & Optimization", "Video Ads Campaign Setup", "Targeted Audience Research & Retargeting", "Video SEO & Thumbnail Strategy", "Performance Tracking & Analytics", "Ad Optimization for Max Conversions"] },
+  {
+    title: "Facebook Ads Expert",
+    icon: <Image src={smfb} alt="Facebook" className="w-14 h-14 object-contain" />,
+    bg: "bg-gradient-to-br from-blue-950 via-blue-800 to-cyan-700 border-blue-500/60 hover:border-cyan-300",
+    desc: [
+      "Facebook Ads Campaign Setup & Management",
+      "Advanced Audience Targeting & Retargeting",
+      "High-Converting Ad Creative Strategy",
+      "Facebook Pixel & Conversion Tracking Setup",
+      "Sales Funnel & Lead Generation Strategy",
+      "Ads Optimization & ROAS Scaling"
+    ]
+  },
+
+  {
+    title: "Google Ads Expert",
+    icon: <Image src={smgoogle} alt="Google" className="w-14 h-14 object-contain" />,
+    bg: "bg-gradient-to-br from-red-950 via-red-800 to-orange-700 border-red-500/60 hover:border-orange-300",
+    desc: [
+      "Google Ads Campaign Setup & Management",
+      "Keyword Research & Targeting Strategy",
+      "Search, Display & YouTube Ads Setup",
+      "Conversion Tracking & GTM Setup",
+      "Ads Optimization & Quality Score Improvement",
+      "ROI & Conversion Rate Optimization"
+    ]
+  },
+
+  {
+    title: "Conversion Tracking Expert",
+    icon: <Image src={smincreasearrow} alt="Tracking" className="w-14 h-14 object-contain" />,
+    bg: "bg-gradient-to-br from-green-950 via-green-800 to-emerald-600 border-green-500/60 hover:border-emerald-300",
+    desc: [
+      "Facebook Pixel Setup & Event Tracking",
+      "Conversion API (CAPI) Integration",
+      "Google Ads Conversion Tracking Setup",
+      "Google Tag Manager (GTM) Configuration",
+      "Server-Side Tracking Setup",
+      "Data Accuracy & Tracking Optimization"
+    ]
+  },
+
+  {
+    title: "Server-Side Tracking Expert",
+    icon: <Image src={smsetting} alt="Server Side" className="w-14 h-14 object-contain" />,
+    bg: "bg-gradient-to-br from-orange-950 via-orange-800 to-amber-600 border-orange-500/60 hover:border-amber-300",
+    desc: [
+      "Server-Side Tracking Setup (GTM Server)",
+      "Facebook CAPI via Server-Side",
+      "GA4 Server-Side Integration",
+      "First-Party Data Tracking Setup",
+      "Data Accuracy & Privacy Compliance",
+      "Tracking Optimization & Debugging"
+    ]
+  },
+
+  {
+    title: "Shopify Store Design Expert",
+    icon: <Image src={smshopify} alt="Shopify" className="w-14 h-14 object-contain" />,
+    bg: "bg-gradient-to-br from-yellow-900 via-yellow-700 to-lime-500 border-yellow-500/60 hover:border-lime-300",
+    desc: [
+      "Shopify Store Setup & Configuration",
+      "Responsive & Mobile-Friendly Design",
+      "Product Page Optimization",
+      "Custom Theme Design & Customization",
+      "Sales Funnel & Checkout Optimization",
+      "App Integration & Performance Optimization"
+    ]
+  },
+
+  {
+    title: "YouTube Marketing Expert",
+    icon: <Image src={smytube} alt="YouTube" className="w-14 h-14 object-contain" />,
+    bg: "bg-gradient-to-br from-red-950 via-red-700 to-pink-600 border-red-500/60 hover:border-pink-300",
+    desc: [
+      "YouTube Channel Setup & Optimization",
+      "Video Ads Campaign Setup",
+      "Targeted Audience Research & Retargeting",
+      "Video SEO & Thumbnail Strategy",
+      "Performance Tracking & Analytics",
+      "Ad Optimization for Max Conversions"
+    ]
+  }
 ];
 
 const SingleCard = ({ service }) => {
@@ -23,7 +107,9 @@ const SingleCard = ({ service }) => {
   const triggerAnim = () => {
     service.desc.forEach((_, i) => {
       controls.start((j) =>
-        j === i ? { x: [-30, 0], opacity: 1, transition: { duration: 0.3, ease: "easeOut", delay: i * 0.08 } } : {}
+        j === i
+          ? { x: [-30, 0], opacity: 1, transition: { duration: 0.3, ease: "easeOut", delay: i * 0.08 } }
+          : {}
       );
     });
   };
@@ -87,11 +173,13 @@ const ServiceCard = () => {
       rotate: [0, -180, -360],
       transition: { duration: 0.8, ease: "easeOut" }
     });
+
     await controls.start((i) => ({
       opacity: 1,
       y: 0,
       transition: { duration: 0.4, ease: "easeOut", delay: i * 0.1 }
     }));
+
     controls.start((i) => ({
       y: [0, -6, 0],
       transition: { duration: 1.2, repeat: Infinity, ease: "easeInOut", delay: i * 0.1 }
@@ -103,9 +191,17 @@ const ServiceCard = () => {
   }, [inView]);
 
   return (
-    <div className="px-4 py-8 sm:py-10 bg-[#060d1f] rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.6)] border border-slate-800/60">
+    <div
+      className="px-4 py-8 sm:py-10 rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.6)] border border-slate-800/60 bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/assets/servicebg.png')"
+      }}
+    >
       <div ref={ref} className="text-center mb-10" onMouseEnter={triggerAnim} onTouchStart={triggerAnim}>
-        <motion.h2 animate={titleControls} initial={{ fontWeight: 700 }} className="text-3xl font-bold text-white mb-4">Services</motion.h2>
+        <motion.h2 animate={titleControls} initial={{ fontWeight: 700 }} className="text-3xl font-bold text-white mb-4">
+          Services
+        </motion.h2>
+
         <p className="text-gray-400 flex flex-wrap justify-center gap-1">
           {words.map((word, i) => (
             <motion.span key={i} custom={i} animate={controls} initial={{ opacity: 1, y: 0 }} className={word.color}>
@@ -114,6 +210,7 @@ const ServiceCard = () => {
           ))}
         </p>
       </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <SingleCard key={index} service={service} />

@@ -16,12 +16,12 @@ const contactItems = [
 ];
 
 const socialLinks = [
-  { icon: <FaFacebookF />, label: "Facebook", href: "https://facebook.com/ahsanuldigital",   bg: "bg-[#1877F2]/20 hover:bg-[#1877F2]",   border: "border-[#1877F2]/50", text: "text-[#1877F2] hover:text-white" },
-  { icon: <FaLinkedinIn />, label: "LinkedIn", href: "https://linkedin.com/in/ahsanuldigital", bg: "bg-[#0A66C2]/20 hover:bg-[#0A66C2]",   border: "border-[#0A66C2]/50", text: "text-[#0A66C2] hover:text-white" },
-  { icon: <FaInstagram />, label: "Instagram", href: "https://instagram.com/ahsanuldigital",  bg: "bg-[#E1306C]/20 hover:bg-[#E1306C]",   border: "border-[#E1306C]/50", text: "text-[#E1306C] hover:text-white" },
-  { icon: <FaXTwitter />,  label: "X.COM",     href: "https://x.com/ahsanuldigital",          bg: "bg-[#14171A]/60 hover:bg-[#14171A]",   border: "border-white/20",     text: "text-white hover:text-white" },
-  { icon: <FaYoutube />,   label: "YouTube",   href: "https://www.youtube.com/@AhsanulDigital", bg: "bg-[#FF0000]/20 hover:bg-[#FF0000]", border: "border-[#FF0000]/50", text: "text-[#FF0000] hover:text-white" },
-  { icon: <FaThreads />,   label: "Threads",   href: "https://threads.com/ahsanuldigital",    bg: "bg-[#101010]/60 hover:bg-[#101010]",   border: "border-white/20",     text: "text-white hover:text-white" },
+  { icon: <FaFacebookF />, label: "Facebook", href: "https://facebook.com/ahsanuldigital", bg: "bg-[#1877F2]/20 hover:bg-[#1877F2]", border: "border-[#1877F2]/50", text: "text-[#1877F2] hover:text-white" },
+  { icon: <FaLinkedinIn />, label: "LinkedIn", href: "https://linkedin.com/in/ahsanuldigital", bg: "bg-[#0A66C2]/20 hover:bg-[#0A66C2]", border: "border-[#0A66C2]/50", text: "text-[#0A66C2] hover:text-white" },
+  { icon: <FaInstagram />, label: "Instagram", href: "https://instagram.com/ahsanuldigital", bg: "bg-[#E1306C]/20 hover:bg-[#E1306C]", border: "border-[#E1306C]/50", text: "text-[#E1306C] hover:text-white" },
+  { icon: <FaXTwitter />, label: "X.COM", href: "https://x.com/ahsanuldigital", bg: "bg-[#14171A]/60 hover:bg-[#14171A]", border: "border-white/20", text: "text-white hover:text-white" },
+  { icon: <FaYoutube />, label: "YouTube", href: "https://www.youtube.com/@AhsanulDigital", bg: "bg-[#FF0000]/20 hover:bg-[#FF0000]", border: "border-[#FF0000]/50", text: "text-[#FF0000] hover:text-white" },
+  { icon: <FaThreads />, label: "Threads", href: "https://threads.com/ahsanuldigital", bg: "bg-[#101010]/60 hover:bg-[#101010]", border: "border-white/20", text: "text-white hover:text-white" },
 ];
 
 const LeftCard = () => {
@@ -46,7 +46,10 @@ const LeftCard = () => {
       onTouchStart={triggerAnim}
       className="w-full flex-1 bg-[#0a192f] p-4 sm:p-6 rounded-2xl border border-slate-700/60 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5)]"
     >
-      <motion.h3 custom={0} animate={controls} initial={{ x: 0 }} className="text-xl text-white font-semibold mb-4">Let's Connect</motion.h3>
+      <motion.h3 custom={0} animate={controls} initial={{ x: 0 }} className="text-xl text-white font-semibold mb-4">
+        Let's Connect
+      </motion.h3>
+
       <motion.p custom={1} animate={controls} initial={{ x: 0 }} className="text-white mb-6">
         Feel free to reach out through any channel. I'm always excited to discuss new projects and opportunities.
       </motion.p>
@@ -61,7 +64,10 @@ const LeftCard = () => {
       </div>
 
       <div className="mt-6">
-        <motion.h4 custom={6} animate={controls} initial={{ x: 0 }} className="text-white text-center font-semibold mb-3">Follow Me</motion.h4>
+        <motion.h4 custom={6} animate={controls} initial={{ x: 0 }} className="text-white text-center font-semibold mb-3">
+          Follow Me
+        </motion.h4>
+
         <div className="grid grid-cols-2 gap-3">
           {socialLinks.map((s, i) => (
             <motion.a
@@ -94,8 +100,9 @@ const RightCard = () => {
   const controls = useAnimation();
   const ref = useRef(null);
   const inView = useInView(ref, { once: false, margin: "-60px" });
+
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [status, setStatus] = useState("idle");
 
   const triggerAnim = () => {
     controls.start((i) => ({
@@ -113,14 +120,13 @@ const RightCard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
+
     try {
       await sendEmail(form);
       setStatus("success");
       setForm({ name: "", email: "", subject: "", message: "" });
       toast.success("Message sent successfully! I'll get back to you soon.");
     } catch (err) {
-      console.error("EmailJS Error status:", err?.status);
-      console.error("EmailJS Error text:", err?.text);
       setStatus("error");
       toast.error("Something went wrong. Please try again.");
     }
@@ -134,34 +140,35 @@ const RightCard = () => {
       onTouchStart={triggerAnim}
       className="w-full flex-1 bg-white p-6 rounded-2xl shadow-[0_4px_24px_-4px_rgba(0,0,0,0.15)] border border-gray-100"
     >
-      <motion.h3 custom={0} animate={controls} initial={{ x: 0 }} className="text-xl font-semibold mb-4">Send Me a Message</motion.h3>
+      <motion.h3 custom={0} animate={controls} initial={{ x: 0 }} className="text-xl font-semibold mb-4">
+        Send Me a Message
+      </motion.h3>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <motion.div custom={1} animate={controls} initial={{ x: 0 }}>
           <label className="block text-sm font-bold">Your Name</label>
-          <motion.input {...inputFocus} type="text" name="name" value={form.name} onChange={handleChange} required placeholder="Enter your name" className="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <motion.input {...inputFocus} type="text" name="name" value={form.name} onChange={handleChange} className="w-full mt-1 px-3 py-2 border rounded-lg" />
         </motion.div>
+
         <motion.div custom={2} animate={controls} initial={{ x: 0 }}>
           <label className="block text-sm font-bold">Your Email</label>
-          <motion.input {...inputFocus} type="email" name="email" value={form.email} onChange={handleChange} required placeholder="Enter your email" className="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <motion.input {...inputFocus} type="email" name="email" value={form.email} onChange={handleChange} className="w-full mt-1 px-3 py-2 border rounded-lg" />
         </motion.div>
+
         <motion.div custom={3} animate={controls} initial={{ x: 0 }}>
           <label className="block text-sm font-bold">Subject</label>
-          <motion.input {...inputFocus} type="text" name="subject" value={form.subject} onChange={handleChange} required placeholder="What's this about?" className="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <motion.input {...inputFocus} type="text" name="subject" value={form.subject} onChange={handleChange} className="w-full mt-1 px-3 py-2 border rounded-lg" />
         </motion.div>
+
         <motion.div custom={4} animate={controls} initial={{ x: 0 }}>
           <label className="block text-sm font-bold">Message</label>
-          <motion.textarea {...inputFocus} rows="3" name="message" value={form.message} onChange={handleChange} required placeholder="Tell me about your project or just say hello!" className="w-full mt-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></motion.textarea>
+          <motion.textarea {...inputFocus} rows="3" name="message" value={form.message} onChange={handleChange} className="w-full mt-1 px-3 py-2 border rounded-lg" />
         </motion.div>
+
         <motion.div custom={5} animate={controls} initial={{ x: 0 }}>
-          <button
-            type="submit"
-            disabled={status === "sending"}
-            className="w-full font-bold bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition disabled:opacity-60"
-          >
+          <button type="submit" disabled={status === "sending"} className="w-full font-bold bg-blue-600 text-white py-2 rounded-lg">
             {status === "sending" ? "Sending..." : "Send Message"}
           </button>
-          {status === "success" && <p className="text-green-600 text-sm mt-2 text-center">Message sent successfully!</p>}
-          {status === "error" && <p className="text-red-500 text-sm mt-2 text-center">Something went wrong. Try again.</p>}
         </motion.div>
       </form>
     </motion.div>
@@ -177,60 +184,35 @@ const GetInTouch = () => {
 
   const triggerTitle = React.useCallback(async () => {
     await Promise.all([
-      titleControls.start({
-        opacity: 1, x: 0,
-        transition: { duration: 0.7, ease: "easeOut" }
-      }),
-      paraControls.start({
-        opacity: 1, x: 0,
-        transition: { duration: 0.7, ease: "easeOut", delay: 0.15 }
-      }),
+      titleControls.start({ opacity: 1, x: 0, transition: { duration: 0.7 } }),
+      paraControls.start({ opacity: 1, x: 0, transition: { duration: 0.7, delay: 0.15 } }),
     ]);
-    titleControls.start({
-      y: [0, -6, 0],
-      transition: { duration: 1.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 3 }
-    });
-    paraControls.start({
-      y: [0, -6, 0],
-      transition: { duration: 1.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 3, delay: 0.1 }
-    });
-  }, [titleControls, paraControls]);
+  }, []);
 
-  useEffect(() => { if (titleInView) triggerTitle(); }, [titleInView, triggerTitle]);
-
-  const handleHover = () => {
-    setHoverKey(k => k + 1);
-  };
+  useEffect(() => { if (titleInView) triggerTitle(); }, [titleInView]);
 
   return (
-    <section id="contact" className="py-8 px-4 sm:px-6 md:px-12 lg:px-20 bg-[#060d1f] rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.6)] border border-slate-800/60">
-      <div className="max-w-6xl mx-auto">
-        <div
-          ref={titleRef}
-          className="text-center mb-8 md:mb-12"
-          onMouseEnter={handleHover}
-          onTouchStart={handleHover}
-        >
-          <motion.h2
-            key={`title-${hoverKey}`}
-            animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
-            initial={{ opacity: 0, x: -80 }}
-            transition={{ duration: 0.7, ease: "easeOut", y: { duration: 1.2, repeat: Infinity, repeatDelay: 3, delay: 0.8 } }}
-            className="text-white text-2xl sm:text-3xl font-bold"
-          >
+    <section
+      id="contact"
+      className="py-8 px-4 sm:px-6 md:px-12 lg:px-20 relative overflow-hidden rounded-2xl border border-slate-800/60"
+      style={{
+        backgroundImage: "url('/assets/getintouchbg.png')",
+      }}
+    >
+      {/* overlay for readability */}
+      <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto z-10">
+        <div ref={titleRef} className="text-center mb-8 md:mb-12">
+          <motion.h2 className="text-white text-2xl sm:text-3xl font-bold">
             Get In Touch
           </motion.h2>
-          <motion.p
-            key={`para-${hoverKey}`}
-            animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
-            initial={{ opacity: 0, x: 80 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15, y: { duration: 1.2, repeat: Infinity, repeatDelay: 3, delay: 1.0 } }}
-            className="text-white mt-3 max-w-2xl mx-auto"
-          >
+
+          <motion.p className="text-white mt-3 max-w-2xl mx-auto">
             I'm always open to discussing new opportunities and exciting projects.
-            Let's connect and create something amazing together!
           </motion.p>
         </div>
+
         <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-stretch">
           <LeftCard />
           <RightCard />
@@ -241,5 +223,3 @@ const GetInTouch = () => {
 };
 
 export default GetInTouch;
-
-
