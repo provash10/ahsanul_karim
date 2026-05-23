@@ -13,7 +13,12 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { FaXTwitter, FaThreads } from "react-icons/fa6";
-import { inputFocus } from "@/app/animations/getInTouchAnimate/getInTouchAnimate";
+import {
+  titleFadeUp,
+  leftSlideIn,
+  rightSlideIn,
+  inputFocus,
+} from "@/app/animations/getInTouchAnimate/getInTouchAnimate";
 import { sendEmail } from "@/components/EmailService/emailService";
 import toast from "react-hot-toast";
 
@@ -70,12 +75,13 @@ const socialLinks = [
 const LeftCard = () => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const inView = useInView(ref, { once: false });
+  const inView = useInView(ref, { once: false, margin: "-40px" });
 
   const trigger = () => {
     controls.start((i) => ({
+      opacity: [0, 1],
       x: [-20, 0],
-      transition: { duration: 0.3, delay: i * 0.05 },
+      transition: { duration: 0.3, delay: i * 0.06 },
     }));
   };
 
@@ -86,7 +92,12 @@ const LeftCard = () => {
   return (
     <motion.div
       ref={ref}
-      className="w-full flex-1 bg-[#0a192f] p-5 rounded-2xl border border-slate-700"
+      variants={leftSlideIn}
+      initial="initial"
+      whileInView="animate"
+      whileHover="whileHover"
+      viewport={{ once: false, amount: 0.1 }}
+      className="w-full flex-1 bg-[#0a192f] p-5 rounded-2xl border border-slate-700 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.5)] transition hover:shadow-[0_8px_40px_-8px_rgba(59,130,246,0.2)]"
       onHoverStart={trigger}
     >
       <h3 className="text-xl text-white font-semibold mb-3">
@@ -99,7 +110,13 @@ const LeftCard = () => {
 
       <div className="space-y-3 text-gray-300">
         {contactItems.map((item, i) => (
-          <motion.p key={i} custom={i} animate={controls} initial={{ x: 0 }} className="flex gap-2">
+          <motion.p
+            key={i}
+            custom={i}
+            animate={controls}
+            initial={{ opacity: 0, x: -20 }}
+            className="flex gap-2"
+          >
             {item.icon}
             {item.text}
           </motion.p>
@@ -111,17 +128,19 @@ const LeftCard = () => {
           Follow Me
         </h4>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 justify-items-center">
           {socialLinks.map((s, i) => (
-            <a
+            <motion.a
               key={i}
               href={s.href}
               target="_blank"
-              className={`${s.bg} text-white flex items-center gap-2 px-3 py-2 rounded-lg text-xs`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`${s.bg} text-white flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold shadow-md w-full max-w-[140px] sm:max-w-[160px]`}
             >
               {s.icon}
               {s.label}
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
@@ -152,58 +171,61 @@ const RightCard = () => {
   };
 
   return (
-    <div className="w-full flex-1 bg-white p-5 rounded-2xl">
-      <h3 className="text-xl font-semibold mb-4">Send Message</h3>
+    <motion.div
+      variants={rightSlideIn}
+      initial="initial"
+      whileInView="animate"
+      whileHover="whileHover"
+      viewport={{ once: false, amount: 0.1 }}
+      className="w-full flex-1 bg-white p-5 rounded-2xl shadow-[0_4px_24px_-4px_rgba(0,0,0,0.2)] border border-slate-100"
+    >
+      <h3 className="text-xl font-semibold mb-4 text-slate-800">Send Message</h3>
 
       <form onSubmit={handleSubmit} className="space-y-3">
-        <input
+        <motion.input
+          {...inputFocus}
           name="name"
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
           placeholder="Name"
-          className="w-full border p-2 rounded"
+          className="w-full border p-2 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200"
         />
 
-        <input
+        <motion.input
+          {...inputFocus}
           name="email"
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
           placeholder="Email"
-          className="w-full border p-2 rounded"
+          className="w-full border p-2 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200"
         />
 
-        <textarea
+        <motion.textarea
+          {...inputFocus}
           name="message"
           value={form.message}
           onChange={(e) => setForm({ ...form, message: e.target.value })}
           placeholder="Message"
-          className="w-full border p-2 rounded"
+          rows={5}
+          className="w-full border p-2 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-shadow duration-200"
         />
 
-        <button className="w-full bg-blue-600 text-white py-2 rounded">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.2 }}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded font-semibold shadow-md transition-colors"
+        >
           Send
-        </button>
+        </motion.button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 
 /* ---------------- MAIN COMPONENT ---------------- */
 
 const GetInTouch = () => {
-  const titleControls = useAnimation();
-  const paraControls = useAnimation();
-
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: false });
-
-  useEffect(() => {
-    if (inView) {
-      titleControls.start({ opacity: 1, y: 0 });
-      paraControls.start({ opacity: 1, y: 0 });
-    }
-  }, [inView]);
-
   return (
     <section
       id="contact"
@@ -217,12 +239,15 @@ const GetInTouch = () => {
       <div className="relative max-w-6xl mx-auto">
 
         {/* TITLE (SKILLS STYLE) */}
-        <div ref={ref} className="text-center mb-10">
+        <div className="text-center mb-10">
 
           <div className="flex justify-center mb-4">
             <motion.h2
-              animate={titleControls}
-              initial={{ opacity: 0, y: 20 }}
+              variants={titleFadeUp}
+              initial="initial"
+              whileInView="animate"
+              whileHover="whileHover"
+              viewport={{ once: false, amount: 0.1 }}
               className="
                 px-6 sm:px-8
                 py-2.5
@@ -235,6 +260,7 @@ const GetInTouch = () => {
                 font-bold
                 border border-white/10
                 shadow-lg shadow-blue-500/20
+                cursor-default
               "
             >
               Get In Touch
@@ -242,8 +268,11 @@ const GetInTouch = () => {
           </div>
 
           <motion.p
-            animate={paraControls}
-            initial={{ opacity: 0, y: 20 }}
+            variants={titleFadeUp}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
             className="text-white max-w-2xl mx-auto text-sm sm:text-base"
           >
             I'm always open to new opportunities and projects.
