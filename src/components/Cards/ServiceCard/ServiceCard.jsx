@@ -151,15 +151,15 @@ const SingleCard = ({ service }) => {
 };
 
 const words = [
-  { text: "Facebook", color: "text-blue-400" },
-  { text: "|", color: "text-gray-500" },
-  { text: "Instagram", color: "text-pink-400" },
-  { text: "|", color: "text-gray-500" },
-  { text: "Google", color: "text-red-400" },
-  { text: "|", color: "text-gray-500" },
-  { text: "Shopify", color: "text-yellow-400" },
-  { text: "|", color: "text-gray-500" },
-  { text: "YouTube", color: "text-red-500" },
+  { text: "Facebook", color: "text-transparent bg-clip-text bg-gradient-to-r from-[#1877F2] to-[#00C6FF] font-extrabold" },
+  { text: "|", color: "text-gray-500 font-bold" },
+  { text: "Instagram", color: "text-transparent bg-clip-text bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#FCB045] font-extrabold" },
+  { text: "|", color: "text-gray-500 font-bold" },
+  { text: "Google", color: "text-transparent bg-clip-text bg-gradient-to-r from-[#EA4335] via-[#FBBC05] to-[#4285F4] font-extrabold" },
+  { text: "|", color: "text-gray-500 font-bold" },
+  { text: "Shopify", color: "text-transparent bg-clip-text bg-gradient-to-r from-[#95BF47] to-[#5E8E3E] font-extrabold" },
+  { text: "|", color: "text-gray-500 font-bold" },
+  { text: "YouTube", color: "text-transparent bg-clip-text bg-gradient-to-r from-[#FF0000] to-[#FF4500] font-extrabold" },
 ];
 
 const ServiceCard = () => {
@@ -192,19 +192,27 @@ const ServiceCard = () => {
 
   return (
     <div
-      className="px-4 py-8 sm:py-10 rounded-2xl shadow-[0_8px_40px_-8px_rgba(0,0,0,0.6)] border border-slate-800/60 bg-cover bg-center"
+      className="px-4 py-8 sm:py-12 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] border border-slate-800/80 bg-cover bg-center relative overflow-hidden"
       style={{
-        backgroundImage: "url('/assets/servicebg.png')"
+        backgroundImage: "linear-gradient(135deg, rgba(3, 8, 16, 0.94) 0%, rgba(10, 25, 47, 0.88) 50%, rgba(3, 8, 16, 0.94) 100%), url('/assets/servicebg.png')"
       }}
     >
-      <div ref={ref} className="text-center mb-10" onMouseEnter={triggerAnim} onTouchStart={triggerAnim}>
-        <motion.h2 animate={titleControls} initial={{ fontWeight: 700 }} className="text-3xl font-bold text-white mb-4">
+      {/* Decorative gradient light spots */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div ref={ref} className="text-center mb-10 relative z-10" onMouseEnter={triggerAnim} onTouchStart={triggerAnim}>
+        <motion.h2 
+          animate={titleControls} 
+          initial={{ fontWeight: 700 }} 
+          className="inline-block px-8 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-2xl sm:text-3xl font-bold mb-6 shadow-lg shadow-blue-500/20 border border-white/10"
+        >
           Services
         </motion.h2>
 
-        <p className="text-gray-400 flex flex-wrap justify-center gap-1">
+        <p className="text-lg sm:text-xl md:text-2xl flex flex-wrap justify-center gap-1.5 sm:gap-2.5 select-none font-bold">
           {words.map((word, i) => (
-            <motion.span key={i} custom={i} animate={controls} initial={{ opacity: 1, y: 0 }} className={word.color}>
+            <motion.span key={i} custom={i} animate={controls} initial={{ opacity: 1, y: 0 }} className={`inline-block ${word.color}`}>
               {word.text}
             </motion.span>
           ))}

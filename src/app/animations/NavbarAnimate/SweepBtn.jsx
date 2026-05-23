@@ -33,7 +33,7 @@ export function SweepLinkBtn({ href, children, className, target, rel, style }) 
     );
 }
 
-export function SweepBtn({ onClick, children, className }) {
+export function SweepBtn({ onClick, children, className, style }) {
     const sweepControls = useAnimation();
     const handleHover = () => {
         sweepControls.start({
@@ -44,6 +44,7 @@ export function SweepBtn({ onClick, children, className }) {
     return (
         <button
             onClick={onClick}
+            style={style}
             className={`relative overflow-hidden btn font-bold ${className}`}
             onMouseEnter={handleHover}
         >

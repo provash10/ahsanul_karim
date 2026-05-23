@@ -87,7 +87,7 @@ const AboutMe = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="text-center md:text-left">
+        {/* <div className="text-center md:text-left">
           <motion.h3
             custom={2}
             animate={controls}
@@ -112,21 +112,92 @@ const AboutMe = () => {
               href="https://docs.google.com/presentation/d/1ldNwNjpT-uIm9rbGf6D1ds6hzs-X8qPI/export/pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-orange-400 transition"
+              className="px-6 py-2 text-white rounded-xl shadow transition"
+              style={{
+                background: "linear-gradient(135deg, #2563eb, #4f46e5)",
+              }}
             >
               Download Resume
             </SweepLinkBtn>
 
             <SweepBtn
               onClick={() => setModalOpen(true)}
-              className="px-6 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-orange-400 transition"
+              className="px-6 py-2 text-white rounded-xl shadow transition"
+              style={{
+                background: "linear-gradient(135deg, #f97316, #e11d48)",
+              }}
             >
               Hire Me
             </SweepBtn>
           </div>
 
           <HireMeModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
-        </div>
+        </div> */}
+
+        {/* RIGHT SIDE */}
+<div className="text-center md:text-left">
+
+  {/* TITLE (SKILLS STYLE) */}
+  <div className="flex justify-center md:justify-start mb-5">
+    <motion.h3
+      custom={2}
+      animate={controls}
+      initial={{ opacity: 0, y: 20 }}
+      className="
+        px-6 sm:px-8
+        py-2.5
+        rounded-full
+        bg-gradient-to-r
+        from-blue-600
+        to-indigo-600
+        text-white
+        text-xl sm:text-2xl md:text-3xl
+        font-bold
+        border border-white/10
+        shadow-lg shadow-blue-500/20
+        text-center
+      "
+    >
+      About Me
+    </motion.h3>
+  </div>
+
+  <motion.p
+    custom={3}
+    animate={controls}
+    initial={{ opacity: 0, y: 20 }}
+    className="text-white leading-relaxed mb-2"
+  >
+    I am a results-driven Digital Marketing Expert specializing in Ads Management, Conversion Tracking, Shopify Store Design, and YouTube Marketing.
+    I help businesses grow their sales, generate more leads, and maximize ROI through data-driven strategies and optimized campaigns.
+  </motion.p>
+
+  <div className="mt-6 sm:mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center md:justify-start">
+    <SweepLinkBtn
+      href="https://docs.google.com/presentation/d/1ldNwNjpT-uIm9rbGf6D1ds6hzs-X8qPI/export/pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="px-6 py-2 text-white rounded-xl shadow transition"
+      style={{
+        background: "linear-gradient(135deg, #2563eb, #4f46e5)",
+      }}
+    >
+      Download Resume
+    </SweepLinkBtn>
+
+    <SweepBtn
+      onClick={() => setModalOpen(true)}
+      className="px-6 py-2 text-white rounded-xl shadow transition"
+      style={{
+        background: "linear-gradient(135deg, #f97316, #e11d48)",
+      }}
+    >
+      Hire Me
+    </SweepBtn>
+  </div>
+
+  <HireMeModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+</div>
       </div>
     </section>
   );

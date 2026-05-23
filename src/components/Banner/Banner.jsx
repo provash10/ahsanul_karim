@@ -165,7 +165,7 @@ const Banner = () => {
                         <SweepLinkBtn
                             href="#contact"
                             className="
-                            w-full
+                            w-56
                             sm:w-auto
                             rounded-xl
                             px-6
@@ -188,7 +188,7 @@ const Banner = () => {
                             href="https://www.fiverr.com/s/387lEbL"
                             target="_blank"
                             className="
-                            w-full
+                            w-56
                             sm:w-auto
                             rounded-xl
                             px-6
