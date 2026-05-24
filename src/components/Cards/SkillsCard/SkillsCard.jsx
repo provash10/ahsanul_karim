@@ -8,7 +8,10 @@ import smfb from "../../../../public/assets/smfb.png";
 import smgoogle from "../../../../public/assets/smgoogle.png";
 import smshopify from "../../../../public/assets/smshopify.png";
 import smyoutube from "../../../../public/assets/smytube.png";
-import demo from "../../../../public/assets/smincreasearrow.png";
+import smserverbg from "../../../../public/assets/smserverbg.png";
+import smfbcapi from "../../../../public/assets/smfbcapi.png";
+
+import smincrease from "../../../../public/assets/smincreasearrow.png";
 
 const skills = [
   {
@@ -23,17 +26,17 @@ const skills = [
   },
   {
     name: "Conversion Tracking",
-    img: demo,
+    img: smincrease,
     bg: "bg-gradient-to-br from-green-950 via-green-800 to-emerald-600 border-green-500/50"
   },
   {
     name: "Server-side Tracking",
-    img: demo,
+    img: smserverbg,
     bg: "bg-gradient-to-br from-purple-950 via-purple-800 to-fuchsia-700 border-purple-500/50"
   },
   {
     name: "Facebook CAPI",
-    img: demo,
+    img: smfbcapi,
     bg: "bg-gradient-to-br from-yellow-900 via-yellow-700 to-amber-500 border-yellow-500/50"
   },
   {
@@ -85,7 +88,7 @@ const SkillsCard = () => {
   return (
     <div
       id="skills"
-      className="relative overflow-hidden bg-cover bg-center bg-no-repeat p-4 sm:p-6"
+      className="relative overflow-hidden rounded-2xl bg-cover bg-center bg-no-repeat p-4 sm:p-6"
       style={{
         backgroundImage:
           "linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)), url('/assets/skills-bg.png')",

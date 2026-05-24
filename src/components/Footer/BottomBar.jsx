@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MdOutlineCopyright } from "react-icons/md";
+import { AnimatedCopyrightIcon } from "@/app/animations/copyrightIconAnimate/CopyrightIconAnimate";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { NameToggle } from "@/app/animations/FooterAnimate/bottomBarAnimate";
@@ -31,7 +31,7 @@ export default function BottomBar() {
 
                 {/* Right - Copyright + Developed By */}
                 <p className="flex flex-wrap items-center gap-1 justify-center sm:justify-end text-center">
-                    Copyright <MdOutlineCopyright className="text-sm" /> {new Date().getFullYear()} | All Rights Reserved.
+                    Copyright <AnimatedCopyrightIcon /> {new Date().getFullYear()} | All Rights Reserved.
                 </p>
             </div>
         </div>

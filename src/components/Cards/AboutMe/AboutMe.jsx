@@ -58,21 +58,24 @@ const AboutMe = () => {
             </motion.div>
           </motion.div>
 
-          <motion.h2
-            custom={0}
-            animate={controls}
-            initial={{ opacity: 1, y: 0 }}
-            className="text-2xl sm:text-3xl font-bold mt-4 text-white px-4 sm:px-8"
-          >
-            Hi, I'm Ahsanul !
-          </motion.h2>
+          <div className="relative inline-block overflow-hidden mt-4 px-4 sm:px-8">
+            <motion.h2
+              custom={0}
+              animate={controls}
+              initial={{ opacity: 1, y: 0 }}
+              className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400"
+            >
+            I'm Ahsanul Karim
+            </motion.h2>
+
+          </div>
 
           <motion.p
             custom={1}
             animate={controls}
             initial={{ opacity: 1, y: 0 }}
             className="
-    text-white
+    text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 font-semibold text-lg
     mt-2
     px-4
     sm:px-8

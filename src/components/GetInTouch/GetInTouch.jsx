@@ -72,8 +72,9 @@ const socialLinks = [
 
 /* ---------------- LEFT CARD ---------------- */
 
-const LeftCard = () => {
+const LeftCard = ({ isSectionHovered }) => {
   const controls = useAnimation();
+  const socialControls = useAnimation();
   const ref = useRef(null);
   const inView = useInView(ref, { once: false, margin: "-40px" });
 
@@ -88,6 +89,30 @@ const LeftCard = () => {
   useEffect(() => {
     if (inView) trigger();
   }, [inView]);
+
+  useEffect(() => {
+    if (isSectionHovered) {
+      socialControls.set({
+        opacity: 0,
+        y: -30,
+      });
+      socialControls.start((i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.7,
+          ease: [0.25, 1, 0.5, 1],
+          delay: i * 0.08,
+        },
+      }));
+    } else {
+      socialControls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.3 },
+      });
+    }
+  }, [isSectionHovered, socialControls]);
 
   return (
     <motion.div
@@ -134,6 +159,9 @@ const LeftCard = () => {
               key={i}
               href={s.href}
               target="_blank"
+              custom={i}
+              initial={{ opacity: 1, y: 0 }}
+              animate={socialControls}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`${s.bg} text-white flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-xs font-semibold shadow-md w-full max-w-[140px] sm:max-w-[160px]`}
@@ -226,9 +254,13 @@ const RightCard = () => {
 /* ---------------- MAIN COMPONENT ---------------- */
 
 const GetInTouch = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <section
       id="contact"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       className="relative py-10 px-4 rounded-2xl overflow-hidden"
       style={{
         backgroundImage: "url('/assets/getintouchbg.png')",
@@ -282,7 +314,7 @@ const GetInTouch = () => {
 
         {/* CARDS */}
         <div className="grid md:grid-cols-2 gap-8">
-          <LeftCard />
+          <LeftCard isSectionHovered={isHovered} />
           <RightCard />
         </div>
 
